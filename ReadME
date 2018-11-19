@@ -26,7 +26,16 @@ The purpose of this report is to help the company identity the problems within t
 3.	Interacting with costumer is the key point for sales. However, there is no efficient systems which can make company contact with costumer conveniently. Therefore, the company needs a system which can provide better customer service and satisfaction to increase their sales.
 
 
-C. intromaps_311SnowComplains.twbx (Tableau Public)
+C. JavaScriptDesginPatterns
+
+I really love JavaScript, so I did this one to share with classmates on JavaScript design patterns
+
+1. Made with Node.js and styled with Handlebars
+
+2. Talks about JavaScript design patterns
+
+
+D. intromaps_311SnowComplains.twbx (Tableau Public)
 
 This graph was made during the workshop of International Open Data Day 2018. The graph contains Snow on Walk Complaint from Edmonton’s various Neighborhood. 
 The data was obtained from Edmonton Open Data Portal via 311 Snow on Walk Complaints.
