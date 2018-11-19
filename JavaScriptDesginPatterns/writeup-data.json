@@ -1,0 +1,73 @@
+{
+    "query": {
+        "results": {
+            "groupF": {
+                "designPatterns": {
+                    "history": "Design patterns originated in architecture. During the 1970s, Christopher Alexander wanted to come up a pattern language that could be used by anybody to create nice public spaces and buildings. He published these ideas in a book called, \"A Pattern Language: Towns, Buildings, Construction\". Every pattern offered a broad solution to a design problem that had been repeatedly found, often in certain contexts. Eventually, in 1987, Kent Beck and Ward Cunningham suggested that a pattern language would also be useful in software design. However, the initial work in software design patterns was done in 1994 by the \"Gang of Four,\" Erich Gamma, Richard Helm, Ralph Johnson, and John Vlissides in their text, \"Design Patterns: Elements of Reusable Object-Oriented Software\". This text was a best-seller, and other people have discovered and described even more design patterns since. In fact, this work persists even today. ",
+                    "what_are_design_patterns": "Design patterns are generic repeatable solutions that can be used for problems that commonly happen in software design. However, just because they are generic doesn't mean they don't have criteria. A design pattern must at least have a name, contextual description of the problem the pattern helps solve, solution description, and description of the consequences of the pattern. ",
+                    "identifying_design_patterns": "Along with checking that design patterns meet the above criteria and definition, we should also examine the code that we believe may have a pattern. In particular, we should make note of what parts of the code we think are covered under existing patterns. When analyzing potential patterns in code, we may just find that we're looking at a good piece of code which adheres to conventions and design patterns that match up with design pattern rules unintentionally. However, as Addy Osmani says in \"Learning Javascript Design Patterns\" (2017), \"solutions in which neither interactions nor defined rules appear are not patterns.\" To identify design patterns, we should study currently known ones to learn proper techniques and as a spring board to identify further design patterns from.",
+                    "benefits_of_design_patterns": "The first benefit can be found in the definition: design patterns are reusable. Anything that doesn't force people to completely reinvent the wheel is a good thing, as it saves time and effort. Furthermore, design patterns increase communication and decrease misunderstandings, as there are well-known, commonly used terms for discussing design patterns. Design patterns are proven and tested, so they provide reliable solutions. As well, design patterns display good design practices, so they act as an example for programmers. Finally, possessing knowledge and understanding of design practices makes it simpler to learn new class libraries, particularly those that make use of design patterns.",
+                    "criticisms": {
+                        "crit_para1": "Some feel that patterns are only needed because people are utilizing computer languages or methods that cannot adequately be abstracted. Ideally, concepts should be used as reference only, and not imitated. However, if imitation is not occurring, then there is no pattern. Moreover, Peter Norvig has shown that more than half of the patterns from \"Design Patterns: Elements of Reusable Object-Oriented Software\" can be simplified or removed completely in Dylan or Lisp.",
+                        "crit_para2": "Another criticism is that the study of design patterns lacks a formal methodology, and some feel that this should be rectified.",
+                        "crit_para3": "Furthermore, while design patterns are meant to systematize best practices, this often leads to code duplication. In many cases, a more effective solution is simply to utilize implementation that has been well-factored.",
+                        "crit_para4": "Finally, some argue that designs patterns resemble other types of abstraction, and using new vocabulary to talk about existing ideas is superfluous. MVC, in particular, is a concept which actually existed prior to design patterns. Thus, some believe that all design patterns do is use new terminology to document ideas which are already known."
+                    }
+                },
+                "prototype_design_pattern": {
+                    "proto_intro": {
+                        "p_intro_para1": "Today’s society and businesses are very concerned about the bottom line. When it comes to technology, people are always interested in saving money by improving performance. In terms of programming, the prototype design pattern is an application of these ideas of economy. Since coming up with new ideas is often labor-intensive, it can be more efficient to use cloning. After all, why reinvent the wheel?",
+                        "p_intro_para2": "The prototype pattern is a type of creational design pattern. Creational patterns contain the tools necessary to create objects. The prototype pattern is distinct from many other creational patterns in that it does not involve classes, and only truly needs objects.",
+                        "p_intro_para3": "The prototype design pattern is an example of cloning. This design pattern involves using a template (prototype) object to specify the kinds of objects to make and then creating new objects by cloning this template. In other words, the prototype pattern is an example of inheritance. All objects created based on the prototype object inherit the properties of the prototype object, but they can also have their own properties as well. "
+                    },
+                    "when_to_use":{
+                        "p_when_para1": "Prototypes are particularly useful when creating new objects is performance-intensive and there are not going to be many changes to the prototype object’s properties and parameters. In this type of situation, prototypes can be more efficient than creating new.",
+                        "p_when_para2": "One example of a suitable situation for using the prototype design pattern is when an considerable database operation is needed to make an object that is used in multiple places in an application. If another part of the application also requires this object, rather than doing the extensive database operations to create the object again, it would be wise to simply clone the object that had already been created."
+                    },
+                    "pros_and_cons_of_prototype": {
+                        "advantanges_of_prototype_pattern": {
+                            "p_adv_para1": "JavaScript naturally fits well with the prototype pattern, and is not trying to mimic other programming languages like it does with other design patterns.",
+                            "p_adv_para2": "Also, the prototype pattern is a really simple way to implement inheritance. Additionally, when incorporating functions into prototype objects, all child objects reference the same function, rather than creating their own copies, which increases performance."
+                        },
+                        "disadvantanges_of_prototype_pattern": {
+                            "p_dis_para1": "The prototype pattern can be problematic when enumeration is needed for object properties along with \"wrapping the contents of the loop in a hasOwnProperty() check\" (Addy Osmani, 2017).",
+                            "p_dis_para2": "Using the prototype pattern can sometimes be heavy-handed, as it can be unnecessary in projects that don’t need very many objects or don’t have a bunch of similar objects."
+                        }
+                    }
+                },                              
+                "sources":{
+                    "text":[
+                        {"txtitem" : "CPSC1520 Assignment4 Friend Finder"},
+                        {"txtitem" : "DMIT2008 Assignment2 WeatherApp"},
+                        {"txtitem" : "DMIT2008 Class Notes"}
+                    ],
+                    "weblinks": [
+                        {"link" : "https://addyosmani.com/resources/essentialjsdesignpatterns/book/"},
+                        {"link" : "https://www.oodesign.com/prototype-pattern.html"},
+                        {"link" : "https://www.geeksforgeeks.org/prototype-design-pattern/"},
+                        {"link" : "https://sourcemaking.com/design_patterns/prototype"},
+                        {"link" : "https://sourcemaking.com/design_patterns/creational_patterns"},
+                        {"link" : "https://sourcemaking.com/design_patterns"},
+                        {"link" : "http://cs.smu.ca/~porter/csc/465/notes/design_patterns.html"},
+                        {"link" : "http://sce2.umkc.edu/BIT/burrise/pl/design-patterns/Design_Patterns.ppt"}
+                    ]
+                },
+                "examples":{
+                    "intro": "The function constructor is creating objects through blueprinting. The examples in this project are inspired by \"NAIT-DMIT-CPSC1520-JavaScript-Friend_Finder\". In Object-Oriented Programming, objects interact with one another through methods and properties. Objects are used to store data, structure applications into modules, and keep code clean.",
+                    "prototype-chain": {
+                        "para1": "If we want JaneDoe to inherit a method or a property from the Friend object, we have to add that method or property to the Friend object’s prototype property.",
+                        "para2": "For example, the Friend's prototype property contains a method to calculate age. JaneDoe inherits this method, and then can call it. Any object created by the Friend constructor can inherit this calculateAge() method as well.",
+                        "para3": "The Friend object itself is an instance of an even bigger constructor, which is the Object object. Each object that we create is an instance of the Object constructor, which has a bunch of methods in its prototype property. The Friend object inherits these methods and can call them. The JaneDoe object also inherits these methods and can also use them. This is the prototype chain.",
+                        "para4": "When we try to access a certain method, or property on an object, Javascript will first try to find that method on that exact object. If that method cannot be found on the object, Javascript will look in the object's prototype => the prototype property of its parent. It moves up the prototype chain. "
+                    },
+                    "Summary": [
+                        {"txtitem": "Every JavaScript object has a prototype property, which makes inheritance possible in JavaScript"},
+                        {"txtitem": "The prototype property of an object is where we put methods and properties that we want other objects to inherit."},
+                        {"txtitem": "The Constructor's prototype property is not just the prototype of the Constructor itself, but it's the prototype of all instances that are created through it."},
+                        {"txtitem": "When a certain method, or property, is called, the Javascript search for the method/property starts in the object itself, and if the method/property cannot be found there, the search moves up onto the object's prototype. This continues until the method is found. This is the prototype chain."}
+                    ]
+                }
+            }     
+        }
+    }
+}

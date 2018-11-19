@@ -1,0 +1,43 @@
+{
+  "name": "group-assignment-f",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "doc": "doc"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "buildjs": "npx babel js/src/main.es6.js --out-file js/dist/main.js",
+    "HBdesignPatterns": "npx handlebars js/src/templates/designPatterns.handlebars -f js/dist/designPatterns-template.js",
+    "HBprototype": "npx handlebars js/src/templates/prototype.handlebars -f js/dist/prototype-template.js",
+    "HBsource": "npx handlebars js/src/templates/source.handlebars -f js/dist/source-template.js",
+    "HBinstanceConstructor": "npx handlebars js/src/templates/instanceConstructor.handlebars -f js/dist/instanceConstructor-template.js",
+    "HBprototypeChain": "npx handlebars js/src/templates/prototypeChain.handlebars -f js/dist/prototypeChain-template.js",
+    "build": "npm run-script buildjs && npm run-script HBdesignPatterns && npm run-script HBprototype && npm run-script HBsource && npm run-script HBinstanceConstructor && npm run-script HBprototypeChain"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/cli": "^7.0.0",
+    "@babel/core": "^7.0.0",
+    "@babel/preset-env": "^7.0.0",
+    "babel-plugin-iife-wrap": "^1.1.0",
+    "handlebars": "^4.0.12",
+    "handlebars-helper-css": "^0.1.0",
+    "less": "^3.8.1",
+    "prismjs": "^1.15.0"
+  },
+  "babel": {
+    "presets": [
+      "@babel/preset-env"
+    ],
+    "plugins": [
+      "iife-wrap"
+    ]
+  },
+  "dependencies": {
+    "save": "^2.3.2"
+  }
+}

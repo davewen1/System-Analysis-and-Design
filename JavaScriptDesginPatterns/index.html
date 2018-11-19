@@ -1,0 +1,273 @@
+<!doctype html>
+<html class="no-js" lang="en-us">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>JavaScript Group Assignment</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="manifest" href="site.webmanifest">
+  <link rel="apple-touch-icon" href="icon.png">
+  <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/prism.css">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/layouts/side-menu.css">
+</head>
+<body>
+  <!--[if lte IE 9]>
+    <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
+  <![endif]-->
+  <div id="layout">
+  <!-- Add your site or application content here -->
+  <!-- Menu toggle -->
+  <a href="#menu" id="menuLink" class="menu-link">
+    <!-- Hamburger icon -->
+    <span></span>
+  </a>
+  <div id="menu">
+    <div class="pure-menu">
+      <a class="pure-menu-heading" href="#">DMIT2008</a>
+      <ul class="pure-menu-list">
+        <li class="pure-menu-item friends"><a href="#" class="pure-menu-link" id="designPatternsTab">Design Patterns</a></li>
+        <li class="pure-menu-item friends"><a href="#" class="pure-menu-link" id="prototypeTab">Prototype</a></li>
+        <li class="pure-menu-item friends"><a href="#" class="pure-menu-link" id="sourcesTab">Sources</a></li>
+      </ul>
+      <ul class="pure-menu-list">
+        <li class="pure-menu-item home"><a href="#" class="pure-menu-link" id="constructorTab">Constructor</a></li>
+        <li class="pure-menu-item friends"><a href="#" class="pure-menu-link" id="prototypeChainTab">Prototype Chain</a></li>
+        <li class="pure-menu-item friends"><a href="#" class="pure-menu-link" id="callbackTab">CallBack</a></li>
+      </ul>
+    </div>
+  </div>
+  <div id="main">
+    <div class="header">
+      <h1>Passion Project - Design Patterns and Testing</h1>
+      <h2>David Wen</h2>
+    </div>
+    <div class="content"></div>
+  </div>
+  <section class="data-display" style="margin-left: 10px;">
+  </section>
+  <section class="data-hide-till-promp" style="margin-left: 10px;">
+    <div id="constructor" style="display: none">
+      <pre><code class="language-javaScript">
+      {
+        "id": 1,
+        "firstName": "Jane",
+        "lastName": "Doe",
+        "avatar": "jane_doe.jpg",
+        "email":" janed@example.com",
+        "hometown": "edmonton,ab",
+        "bio": "id1"
+      }</code></pre>
+      <p>From this, we create the variables janeDoe, tomJones, and clarkKen in a similar fashion to demonstrate design pattern.</p>
+      <pre><code class="language-javaScript">
+        var janeDoe = {
+            id : 1,
+            firstName : 'Jane',
+            lastName : 'Doe',
+            email : 'janed@example.com',
+            hometown : 'Edmonton, AB',
+            birthYear: 1995,
+            calculateAge : function() {
+                console.log(2018 - this.birthYear);
+            }
+        }
+        var tomJones = {
+            id: 2,
+            firstName : 'Tom',
+            lastName : 'Jones',
+            email: 'tommyg@example.com',
+            hometown: 'Edmonton, AB',
+            birthYear: 2002,
+            calculateAge : function() {
+                console.log(2018 - this.birthYear);
+            }
+        }
+        var clarkKen = {
+            id: 3,
+            firstName : 'Clark',
+            lastName : 'Ken',
+            email: 'clarkk@example.com',
+            hometown: 'Edmonton, AB',
+            birthYear: 1990,
+            calculateAge : function() {
+                console.log(2018 - this.birthYear);
+            }
+        }
+      </code></pre>
+      <p>The function constructor is creating objects through blueprinting. Parameters of the functions will be the variables we want to set in this object; in this case the parameters are id, firstName, lastName, email, hometown, and birthYear.</p>
+      <pre><code class="language-javaScript">
+        var Friend = function(id, firstName, lastName, email, hometown, birthYear) {
+            this.id = id; //the "this" variable is an object as well. this.name is the input of the function(the parameter of the function).
+            this.firstName = firstName;
+            this.lastName = lastName;
+            this.email = email;
+            this.hometown = hometown;
+            this.birthYear = birthYear;
+        }
+    
+        Friend.prototype.calculateAge = function() {
+            console.log(`${this.firstName} ${this.lastName} is ${(new Date()).getFullYear() - this.birthYear} years old`);
+        }
+    
+        // add a property to Friend to be inherited for all of its instances - 'mix it up'
+        Friend.prototype.school = 'NAIT';
+        // now we have the function constructor in place, we can use this constructor to create a janeDoeFriend object
+    
+        var janeDoeFriend = new Friend(1, 'Jane', 'Doe', 'janed@example.com', 'Edmonton, AB', 1995); //when we use the "new" operator, a brand new object is created. 
+        // the "new" operator points the "this" variable, not to the global object, but to this new empty object.
+        janeDoeFriend.calculateAge();
+        //Jane Doe is 23 years old
+        var tomJonesFriend = new Friend(2,'Tom','Jones','tommyg@example.com', 'Edmonton, AB', 2002);
+        tomJonesFriend.calculateAge();
+      </code></pre>
+      <p>The Object.Create method first defines an object that will act as the prototype, and then it creates a new object.</p>
+      <pre><code class="language-javaScript">
+        var FriendProto = {
+          calculateAge: function() {
+              console.log(`${this.firstName} ${this.lastName} is ${(new Date()).getFullYear() - this.birthYear} years old`);
+          }
+       };
+      
+      var clark = Object.create(FriendProto,{
+          firstName: { value: 'clark'},
+          lastName: {value: 'Ken'},
+          email: {value: 'clarkk@example.com'},
+          hometown: {value: 'Edmonton, AB'},
+          birthYear: {value: 1990}    
+      });
+      clark.calculateAge();
+      // The difference between object.create and the function constructor pattern is
+      // object.create builds an object that inherits directly from the one that we passed into the first argument.
+      // On the other hand, with the function constructor the newly created object inherits from the constructor's prototype property.
+      // The benefit of object.create is that it allows us to implement really complex inheritant structures in an easier way
+      // than function constructors because it allows us to directly specify which object should be a prototype.
+      </code></pre>
+      <p>When you execute the code in console, you would see this:</p>
+      <img src="img/constructorAgeCalcResult.PNG" alt="Instances Constructor" style="display: block; margin: 0 auto; margin-bottom: 20px;">
+    </div>
+    <div id="callback" style="display: none">
+      <h3>Continued from Prototype Chain...</h3>
+      <p>This section will demonstrate examples of using the callback function.</p>
+      <p>First, let's do an array calculation function:</p>
+      <img src="img/constructorAgeCalcResult.PNG" alt="Instances Constructor" style="display: block; margin: 0 auto;">
+      <pre><code class="language-javaScript">
+          var friendBirthYears = [janeDoeFriend.birthYear, tomJonesFriend.birthYear, clark.birthYear];
+          function arrayCalcution(array, fn) {
+              var arrayResult = [];
+              for (let i=0; i < array.length; i++) {
+                  arrayResult.push(fn(array[i]));
+              }
+              return arrayResult;
+          }
+      </code></pre>
+      <p>In this case, what are we actually going to push into the array? The answer is that it will be the result of the fn function (the outer bracket (fn)) got pushed into the array. Then we pass the current element of the input array into this function, Array i,  (the inner bracket( "fn()" )). </p>
+      <p>These functions will be called with the i element of the input array:</p>
+      <pre><code class="language-javaScript">
+          //callback functions:
+          function calculateAge(el) {
+              return (new Date()).getFullYear() - el;
+          }
+          
+          function isFullAge(el) {
+              return el >= 18;
+          }
+      </code></pre>
+      <p>Now we execute the function and view our result</p>
+      <pre><code class="language-javaScript">
+          var ages = arrayCalcution(friendBirthYears, calculateAge); //Notice this is not the calculateAge() function, because we want this to be called later by the arrayCalculation function, which is why this is called the callback (because it is called later)
+          var fullAges = arrayCalcution(ages, isFullAge);
+          console.log(ages);
+          console.log(fullAges);
+      </code></pre>
+      <img src="img/arrayCallBkCalcResult.PNG" alt="Array CallBk CalcResult" style="display: block; margin: 0 auto;">
+      <p>This is beneficial because this creats a modular and each function has a simple task rather than a big function that does a ton of things. This is achieved by passing functions around like variables - passing functions like arguments.</p>
+      <h3>Function returns an entire function</h3>
+      <p>The following example shows an function returning an entire function.</p>
+      <pre><code class="language-javaScript">    
+          function oldEnoughtoDrink (age) {
+              if (age >=21){
+                  //use an anonymous function that accepts a name
+                  return function(name) {
+                      console.log(`${name}, you are old enough to drink everywhere, have fun`);
+                  }
+              } else if (age >=18 && age <21) {
+                  return function(name) {
+                      console.log(`${name}, you are old enough to drink in Canada, be responsible`);
+                  }
+              } else{
+                  return function(name) {
+                      console.log(`${name}, you are not old enough, go play video games`);
+                  }
+              }
+          }
+          // now create variables to store the results
+          var ageVerificationA = oldEnoughtoDrink(18);
+          ageVerificationA('PersonA');
+         
+          var ageVerificationB = oldEnoughtoDrink(21);
+          ageVerificationB('PersonB');
+         
+          var ageVerificationC = oldEnoughtoDrink(17)('PersonC');
+      </code></pre>
+      <p>View result in console</p>
+      <img src="img/fnReturnFn.PNG" alt="Fn returning Fn" style="display: block; margin: 0 auto;">
+      <h3>Closure</h3>
+      <pre><code class="language-javaScript">   
+          function closureOldEnoughtoDrink (age) {
+              return function (name){
+                  if(age>=21){ 
+                      console.log(`${name}, you are old enough to drink everywhere, have fun`);
+                  }else if (age>=18 && age <21){
+                      console.log(`${name}, you are old enough to drink in Canada, be responsible`);
+                  }else{
+                      console.log(`${name}, you are not old enough, go play video games`);
+                  }
+              }
+          }
+          
+          closureOldEnoughtoDrink (21)('Bob.B');          
+          console.log((new Date()).getFullYear()-janeDoeFriend.birthYear);
+          closureOldEnoughtoDrink ((new Date()).getFullYear()-janeDoeFriend.birthYear)(`${janeDoeFriend.firstName} ${janeDoeFriend.lastName}`);
+      </code></pre>
+      <img src="img/closureResult.PNG" alt="closure" style="display: block; margin: 0 auto;">
+      <h3>IIFE</h3>
+      <p>IIFE focuses on data protection, instead of reuseability.</p>
+      <pre><code class="language-javaScript">       
+           (function(birthYear){
+              var age = new Date().getFullYear() - birthYear;
+              if (age >=21){
+                  //use an anonymous function that accepts a name
+                  return function(name) {
+                      console.log(`${name}, you are old enough to drink everywhere, have fun`);
+                  }
+              } else if (age >=18 && age <21) {
+                  return function(name) {
+                      console.log(`${name}, you are old enough to drink in Canada, be responsible`);
+                  }
+              } else{
+                  return function(name) {
+                      console.log(`${name}, you are not old enough, go play video games`);
+                  }
+              }
+          })(1990)('David');
+      </code></pre>
+      <img src="img/IIFEResult.PNG" alt="IIFE" style="display: block; margin: 0 auto; margin-bottom: 20px;">
+    </div>
+  </section>
+  <script src="js/vendor/modernizr-3.6.0.min.js"></script>
+  <script src="js/vendor/handlebars.runtime-v4.0.12.js"></script>
+  <script src="js/dist/designPatterns-template.js"></script>
+  <script src="js/dist/prototype-template.js"></script>
+  <script src="js/dist/source-template.js"></script>
+  <script src="js/dist/instanceConstructor-template.js"></script>
+  <script src="js/dist/prototypeChain-template.js"></script>
+  <script src="js/plugins.js"></script>
+  <script src="js/dist/main.js"></script>
+  <!-- <script src="./js/src/main.es6.js"></script> -->
+  <script src="js/dist/ui.js"></script>
+  <script src="./js/dist/prism.js"></script>
+</body>
+</html>
